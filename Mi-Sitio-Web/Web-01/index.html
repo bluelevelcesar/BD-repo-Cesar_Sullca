@@ -256,9 +256,11 @@
             <p>
                 Esta consulta eliminará la tabla <code class="typewriter-code">empleados</code> y todas las referencias a ella en otras tablas, eliminando también los datos asociados.
             </p>
+        
 
             <h2 style="margin-top: 2rem;">Quitar datos de la tabla</h2>
             <p>
+
                 Para eliminar todos los datos de una tabla sin eliminar la tabla en sí, se utiliza la instrucción <code class="typewriter-code">TRUNCATE TABLE</code>. Por ejemplo:
             </p>
 
@@ -285,11 +287,9 @@
                     <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
                 </div>
 
-                
+
                 <pre><code class="sql"><span class="kwd">DROP DATABASE</span> mi_base_de_datos;</code></pre>
             </div>
-
-
 
             <p>
                 Esta consulta elimina la base de datos <code class="typewriter-code">mi_base_de_datos</code> junto con todas las tablas y datos que contiene. Al igual que con las instrucciones <code class="typewriter-code">DELETE</code> y <code class="typewriter-code">DROP TABLE</code>, es importante tener cuidado al utilizar <code class="typewriter-code">DROP DATABASE</code>, ya que <strong>eliminará permanentemente</strong> la base de datos y todos sus contenidos.
