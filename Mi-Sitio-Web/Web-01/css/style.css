@@ -1,0 +1,248 @@
+/* Paleta Editorial Neobrutalista */
+:root {
+    --paper-bg: #f4f1ea;
+    --paper-card: #ffffff;
+    --ink-black: #111111;
+    --editorial-red: #d92b2b;
+    --border-stroke: 3px solid #111111;
+    --shadow-hard: 5px 5px 0px #111111;
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-mono: 'Courier Prime', monospace;
+    --font-sans: 'Space Grotesk', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--paper-bg);
+    color: var(--ink-black);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    padding: 1.5rem;
+}
+
+/* Header de Periódico */
+.paper-header {
+    max-width: 950px;
+    margin: 0 auto 2.5rem;
+    border-bottom: var(--border-stroke);
+    padding-bottom: 1rem;
+}
+
+.top-meta {
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-bottom: 1px solid var(--ink-black);
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+.main-title {
+    text-align: center;
+    margin: 1.5rem 0;
+}
+
+.main-title h1 {
+    font-family: var(--font-serif);
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    line-height: 1;
+}
+
+.tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+/* Navegación */
+.paper-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    border-top: 2px solid var(--ink-black);
+    border-bottom: 2px solid var(--ink-black);
+    padding: 0.6rem 0;
+    margin-top: 1rem;
+}
+
+.paper-nav a {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--ink-black);
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.paper-nav a:hover {
+    color: var(--editorial-red);
+    text-decoration: underline;
+}
+
+/* Contenedor Principal */
+.paper-container {
+    max-width: 950px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+/* Tarjetas Neobrutalistas */
+.paper-card {
+    background: var(--paper-card);
+    border: var(--border-stroke);
+    box-shadow: var(--shadow-hard);
+    padding: 2.5rem;
+    position: relative;
+}
+
+.card-badge {
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background: var(--ink-black);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.2rem 0.6rem;
+}
+
+h2 {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 2px solid var(--ink-black);
+    padding-bottom: 0.4rem;
+}
+
+.lead-text {
+    font-size: 1.05rem;
+}
+
+/* Lista Neobrutalista */
+.key-points {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin: 1.5rem 0;
+}
+
+.point-item {
+    background: #f8f6f0;
+    border: 2px solid var(--ink-black);
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+    box-shadow: 3px 3px 0px var(--ink-black);
+}
+
+/* Caja de Aviso Editorial */
+.editorial-box {
+    background: #fff8f8;
+    border: var(--border-stroke);
+    border-left: 8px solid var(--editorial-red);
+    padding: 1.2rem;
+    margin: 1.8rem 0;
+    position: relative;
+}
+
+.box-stamp {
+    background: var(--editorial-red);
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.1rem 0.4rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+}
+
+/* Código Inline */
+.typewriter-code {
+    font-family: var(--font-mono);
+    background: #eef1f5;
+    border: 1px solid var(--ink-black);
+    padding: 0.15rem 0.4rem;
+    font-weight: 700;
+    font-size: 0.88em;
+}
+
+/* Bloques de Código Impresos */
+.print-code-block {
+    border: var(--border-stroke);
+    box-shadow: 4px 4px 0px var(--ink-black);
+    margin: 1.5rem 0;
+    background: #181818;
+    color: #f4f1ea;
+}
+
+.code-bar {
+    background: #2a2a2a;
+    border-bottom: 2px solid var(--ink-black);
+    padding: 0.4rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: #aaa;
+}
+
+.copy-btn {
+    background: var(--paper-bg);
+    border: 1px solid var(--ink-black);
+    color: var(--ink-black);
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    cursor: pointer;
+}
+
+.copy-btn:hover {
+    background: var(--editorial-red);
+    color: #fff;
+}
+
+pre {
+    padding: 1.2rem;
+    overflow-x: auto;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Sintaxis SQL Estilo Tinta */
+.kwd { color: #ff6b6b; font-weight: 700; }
+.type { color: #4ecdc4; font-weight: 700; }
+.num { color: #ffe66d; }
+.str { color: #95e1d3; }
+
+/* Pie de Página */
+.paper-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: var(--border-stroke);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+    .main-title h1 { font-size: 2.2rem; }
+    .paper-nav { flex-direction: column; align-items: center; gap: 0.5rem; }
+    .top-meta { flex-direction: column; text-align: center; gap: 0.2rem; }
+    .paper-card { padding: 1.5rem; }
+}

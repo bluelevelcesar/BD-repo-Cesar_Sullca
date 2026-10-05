@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EL DIARIO DE SQL — Edición 2026</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Encabezado Estilo Periódico -->
+    <header class="paper-header">
+        <div class="top-meta">
+            <span>EDICIÓN N° 01 — BASE DE DATOS</span>
+            <span>CHILECITO, LA RIOJA — 2026</span>
+            <span>GUÍA DE ESTUDIO COMPLETA</span>
+        </div>
+        <div class="main-title">
+            <h1>EL DIARIO DE SQL</h1>
+            <p class="tagline">« Apuntes teóricos, comandos clave y manipulación de datos »</p>
+        </div>
+        <nav class="paper-nav">
+            <a href="#introduccion">I. INTRO</a>
+            <a href="#manipulacion">II. BD</a>
+            <a href="#creacion-tabla">III. TABLAS</a>
+            <a href="#insercion">IV. INSERCIÓN</a>
+            <a href="#eliminacion-actualizacion">V. EDICIÓN</a>
+            <a href="#alter-drop">VI. ESTRUCTURA</a>
+            <a href="#consultas-filtrado">VII. CONSULTAS</a>
+        </nav>
+    </header>
+
+    <!-- Contenedor Principal en Columnas -->
+    <main class="paper-container">
+
+        <!-- Sección I: Introducción -->
+        <article id="introduccion" class="paper-card">
+            <div class="card-badge">SECCIÓN I</div>
+            <h2>Introducción</h2>
+            <p class="lead-text">
+                <strong>SQL (Structured Query Language)</strong> es un lenguaje de programación utilizado para gestionar bases de datos relacionales. Permite realizar consultas, insertar, actualizar y eliminar datos de manera eficiente. A continuación, se presentan algunos conceptos clave:
+            </p>
+
+            <div class="key-points">
+                <div class="point-item">
+                    <strong>Base de datos:</strong> Un conjunto organizado de datos que se pueden acceder y manipular.
+                </div>
+                <div class="point-item">
+                    <strong>Tabla:</strong> Una estructura dentro de una base de datos que almacena datos en filas y columnas.
+                </div>
+                <div class="point-item">
+                    <strong>Consulta:</strong> Una instrucción SQL que se utiliza para recuperar o manipular datos en una base de datos.
+                </div>
+            </div>
+
+            <div class="editorial-box">
+                <span class="box-stamp">Aviso Importante</span>
+                <p>
+                    Notemos que hay una distinción importante entre una <strong>Base de Datos</strong> y una <strong>Tabla</strong>. Una Base de Datos puede contener múltiples Tablas, cada una con su propia estructura y datos. La base de datos puede referirse a un conjunto completo de datos, mientras que una tabla es una representación específica de esos datos en forma de filas y columnas.
+                </p>
+            </div>
+
+            <p>
+                Por ejemplo, en una base de datos de una empresa, podrías tener una tabla para empleados, otra para departamentos y otra para proyectos. Cada tabla contendría información específica relacionada con su tema, pero todas formarían parte de la misma base de datos.
+            </p>
+        </article>
+
+        <!-- Sección II: Manipulación de bases de datos -->
+        <article id="manipulacion" class="paper-card">
+            <div class="card-badge">SECCIÓN II</div>
+            <h2>Manipulación de tablas y bases de datos</h2>
+            <p>
+                Para crear una base de datos en SQL, se utiliza la instrucción <code class="typewriter-code">CREATE DATABASE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // DATABASE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">CREATE DATABASE</span> mi_base_de_datos;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta crea una nueva base de datos llamada <code class="typewriter-code">mi_base_de_datos</code>. Una vez creada, se puede utilizar para crear tablas y almacenar datos.
+            </p>
+        </article>
+
+        <!-- Sección III: Creación de Tablas -->
+        <article id="creacion-tabla" class="paper-card">
+            <div class="card-badge">SECCIÓN III</div>
+            <h2>Creación de una tabla</h2>
+            <p>
+                Para crear una tabla dentro de una base de datos, se utiliza la instrucción <code class="typewriter-code">CREATE TABLE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // TABLE_DEF</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">CREATE TABLE</span> empleados (
+    id <span class="type">INT</span> <span class="kwd">PRIMARY KEY</span>,
+    nombre <span class="type">VARCHAR</span>(<span class="num">50</span>),
+    departamento <span class="type">VARCHAR</span>(<span class="num">50</span>),
+    salario <span class="type">DECIMAL</span>(<span class="num">10</span>, <span class="num">2</span>)
+);</code></pre>
+            </div>
+
+            <p>
+                Esta consulta crea una tabla llamada <code class="typewriter-code">empleados</code> con cuatro columnas: <code class="typewriter-code">id</code>, <code class="typewriter-code">nombre</code>, <code class="typewriter-code">departamento</code> y <code class="typewriter-code">salario</code>. La columna <code class="typewriter-code">id</code> es de tipo entero (<code class="typewriter-code">INT</code>) y se define como la clave primaria (<code class="typewriter-code">PRIMARY KEY</code>), lo que significa que debe ser única para cada registro. Las columnas <code class="typewriter-code">nombre</code> y <code class="typewriter-code">departamento</code> son de tipo cadena de caracteres variable (<code class="typewriter-code">VARCHAR</code>) con un máximo de 50 caracteres, y la columna <code class="typewriter-code">salario</code> es de tipo decimal con dos decimales.
+            </p>
+        </article>
+
+        <!-- Sección IV: Inserción de Datos -->
+        <article id="insercion" class="paper-card">
+            <div class="card-badge">SECCIÓN IV</div>
+            <h2>Inserción de datos</h2>
+            <p>
+                Para insertar datos en una tabla, se utiliza la instrucción <code class="typewriter-code">INSERT INTO</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // INSERT_01</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">INSERT INTO</span> empleados (id, nombre, departamento, salario)
+<span class="kwd">VALUES</span> (<span class="num">1</span>, <span class="str">'Juan Pérez'</span>, <span class="str">'Recursos Humanos'</span>, <span class="num">3000.00</span>);</code></pre>
+            </div>
+
+            <p>
+                Esta consulta inserta un nuevo registro en la tabla <code class="typewriter-code">empleados</code> con los valores especificados para cada columna. Se pueden insertar múltiples registros utilizando varias sentencias <code class="typewriter-code">INSERT INTO</code> o una sola sentencia con múltiples valores. En el ejemplo de arriba solo se está agregando información de un empleado llamado "Juan Pérez".
+            </p>
+
+            <p>Podríamos agregar muchos más empleados en un mismo bloque:</p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // INSERT_BATCH</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">INSERT INTO</span> empleados (id, nombre, departamento, salario)
+<span class="kwd">VALUES</span>
+(<span class="num">2</span>, <span class="str">'Ana Gómez'</span>, <span class="str">'Finanzas'</span>, <span class="num">3500.00</span>),
+(<span class="num">3</span>, <span class="str">'Luis Martínez'</span>, <span class="str">'IT'</span>, <span class="num">4000.00</span>),
+(<span class="num">4</span>, <span class="str">'María López'</span>, <span class="str">'Marketing'</span>, <span class="num">3200.00</span>);</code></pre>
+            </div>
+
+            <p>
+                Esto inserta tres registros en la tabla <code class="typewriter-code">empleados</code> de una sola vez, lo que es más eficiente que realizar múltiples sentencias <code class="typewriter-code">INSERT INTO</code> por separado.
+            </p>
+        </article>
+
+        <!-- Sección V: Eliminación y Actualización de Datos (Imagen 04) -->
+        <article id="eliminacion-actualizacion" class="paper-card">
+            <div class="card-badge">SECCIÓN V</div>
+            <h2>Eliminación de datos</h2>
+            <p>
+                Para eliminar datos de una tabla, se utiliza la instrucción <code class="typewriter-code">DELETE FROM</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // DELETE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">DELETE FROM</span> empleados
+<span class="kwd">WHERE</span> id = <span class="num">1</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta elimina el registro de la tabla <code class="typewriter-code">empleados</code> donde el <code class="typewriter-code">id</code> es igual a 1. Es importante tener cuidado al utilizar esta instrucción, ya que <strong>eliminará permanentemente</strong> los datos del registro especificado.
+            </p>
+
+            <h2 style="margin-top: 2rem;">Actualización de datos</h2>
+            <p>
+                Para actualizar datos en una tabla, se utiliza la instrucción <code class="typewriter-code">UPDATE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // UPDATE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">UPDATE</span> empleados
+<span class="kwd">SET</span> salario = <span class="num">3200.00</span>
+<span class="kwd">WHERE</span> id = <span class="num">2</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta actualiza el salario del empleado con <code class="typewriter-code">id</code> igual a 2, estableciendo su nuevo salario en <code class="typewriter-code">$3200.00</code>. Al igual que con la instrucción <code class="typewriter-code">DELETE</code>, es importante especificar correctamente la condición en la cláusula <code class="typewriter-code">WHERE</code> para evitar actualizar registros incorrectos.
+            </p>
+        </article>
+
+        <!-- Sección VI: Estructura, Tablas y Bases de datos (Imágenes 05 y 06) -->
+        <article id="alter-drop" class="paper-card">
+            <div class="card-badge">SECCIÓN VI</div>
+            <h2>Actualización de columnas en una tabla</h2>
+            <p>
+                Para actualizar la estructura de una tabla, como agregar o eliminar columnas, se utiliza la instrucción <code class="typewriter-code">ALTER TABLE</code>. Por ejemplo, para agregar una nueva columna llamada <code class="typewriter-code">fecha_contratacion</code> a la tabla <code class="typewriter-code">empleados</code>, se puede hacer lo siguiente:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // ALTER_ADD</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">ALTER TABLE</span> empleados
+<span class="kwd">ADD</span> fecha_contratacion <span class="type">DATE</span>;</code></pre>
+            </div>
+
+            <p>Si luego se quisiera eliminar esta columna, se utilizaría:</p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // ALTER_DROP</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">ALTER TABLE</span> empleados
+<span class="kwd">DROP COLUMN</span> fecha_contratacion;</code></pre>
+            </div>
+
+            <h2 style="margin-top: 2rem;">Eliminación de una tabla</h2>
+            <p>
+                Para eliminar una tabla de una base de datos, se utiliza la instrucción <code class="typewriter-code">DROP TABLE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // DROP_TABLE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">DROP TABLE</span> empleados;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta elimina la tabla <code class="typewriter-code">empleados</code> de la base de datos, junto con todos los datos que contiene, <strong>a menos que existan restricciones de <em>foreign keys</em></strong>. Al igual que con la instrucción <code class="typewriter-code">DELETE</code>, es importante tener cuidado al utilizar <code class="typewriter-code">DROP TABLE</code>, ya que <strong>eliminará permanentemente</strong> la tabla y sus datos.
+            </p>
+
+            <p>
+                Si se sabe que la tabla tiene restricciones de <em>foreign keys</em> y se desea eliminarla junto con todas las referencias, se puede utilizar la opción <code class="typewriter-code">CASCADE</code>:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // DROP_CASCADE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">DROP TABLE</span> empleados <span class="kwd">CASCADE</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta eliminará la tabla <code class="typewriter-code">empleados</code> y todas las referencias a ella en otras tablas, eliminando también los datos asociados.
+            </p>
+
+            <h2 style="margin-top: 2rem;">Quitar datos de la tabla</h2>
+            <p>
+                Para eliminar todos los datos de una tabla sin eliminar la tabla en sí, se utiliza la instrucción <code class="typewriter-code">TRUNCATE TABLE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // TRUNCATE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">TRUNCATE TABLE</span> empleados;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta elimina todos los registros de la tabla <code class="typewriter-code">empleados</code>, pero mantiene la estructura de la tabla intacta. Por lo tanto, la tabla seguirá existiendo y se podrá seguir utilizando para insertar nuevos datos.
+            </p>
+
+            <h2 style="margin-top: 2rem;">Eliminación de una base de datos</h2>
+            <p>
+                Para eliminar una base de datos completa, se utiliza la instrucción <code class="typewriter-code">DROP DATABASE</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // DROP_DB</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">DROP DATABASE</span> mi_base_de_datos;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta elimina la base de datos <code class="typewriter-code">mi_base_de_datos</code> junto con todas las tablas y datos que contiene. Al igual que con las instrucciones <code class="typewriter-code">DELETE</code> y <code class="typewriter-code">DROP TABLE</code>, es importante tener cuidado al utilizar <code class="typewriter-code">DROP DATABASE</code>, ya que <strong>eliminará permanentemente</strong> la base de datos y todos sus contenidos.
+            </p>
+        </article>
+
+        <!-- Sección VII: Consultas y Filtrado (Imágenes 07 y 08) -->
+        <article id="consultas-filtrado" class="paper-card">
+            <div class="card-badge">SECCIÓN VII</div>
+            <h2>Consultas en una tabla</h2>
+            <p>
+                Ahora que ya se tiene un conjunto de tablas con datos insertados, se pueden realizar consultas para recuperar información específica. Las consultas se realizan utilizando la instrucción <code class="typewriter-code">SELECT</code>. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // SELECT_ALL</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">SELECT</span> * <span class="kwd">FROM</span> empleados;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta selecciona todos los registros de la tabla <code class="typewriter-code">empleados</code> y muestra todas las columnas. El asterisco (<code>*</code>) indica que se deben seleccionar todas las columnas disponibles.
+            </p>
+
+            <p>
+                Para seleccionar columnas específicas, se pueden enumerar los nombres de las columnas en lugar de usar el asterisco. Por ejemplo:
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // SELECT_COLS</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">SELECT</span> nombre, salario <span class="kwd">FROM</span> empleados;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta selecciona solo las columnas <code class="typewriter-code">nombre</code> y <code class="typewriter-code">salario</code> de la tabla <code class="typewriter-code">empleados</code>, mostrando únicamente esos datos en el resultado.
+            </p>
+
+            <h2 style="margin-top: 2rem;">Filtrado de resultados</h2>
+            <p>
+                Para filtrar los resultados de una consulta, se utiliza la cláusula <code class="typewriter-code">WHERE</code>. Por ejemplo:
+            </p>
+
+            
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // WHERE_STRING</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">SELECT</span> * <span class="kwd">FROM</span> empleados
+<span class="kwd">WHERE</span> departamento = <span class="str">'IT'</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta selecciona todos los registros de la tabla <code class="typewriter-code">empleados</code> donde el departamento es igual a <strong>IT</strong>. La cláusula <code class="typewriter-code">WHERE</code> permite especificar condiciones para filtrar los resultados de la consulta.
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // WHERE_NUMERIC</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">SELECT</span> * <span class="kwd">FROM</span> empleados
+<span class="kwd">WHERE</span> salario > <span class="num">3000.00</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta selecciona todos los registros de la tabla <code class="typewriter-code">empleados</code> donde el salario es mayor a <strong>3000.00</strong>. Se pueden utilizar operadores de comparación como <code>=</code>, <code>></code>, <code><</code>, <code>>=</code>, <code><=</code> y <code><></code> para establecer condiciones en la cláusula <code class="typewriter-code">WHERE</code>.
+            </p>
+
+            <div class="print-code-block">
+                <div class="code-bar">
+                    <span>REGISTRO_SQL // WHERE_LIKE</span>
+                    <button class="copy-btn" onclick="copyCode(this)">[COPIAR]</button>
+                </div>
+                <pre><code class="sql"><span class="kwd">SELECT</span> * <span class="kwd">FROM</span> empleados
+<span class="kwd">WHERE</span> nombre <span class="kwd">LIKE</span> <span class="str">'A%'</span>;</code></pre>
+            </div>
+
+            <p>
+                Esta consulta selecciona todos los registros de la tabla <code class="typewriter-code">empleados</code> donde el nombre comienza con la letra <strong>A</strong>. El operador <code class="typewriter-code">LIKE</code> se utiliza para realizar búsquedas basadas en patrones, y el símbolo <code>%</code> actúa como un comodín que representa cualquier secuencia de caracteres.
+            </p>
+        </article>
+
+    </main>
+
+<footer class="paper-footer">
+    <p>© 2026 | Propiedad de <strong>César Sullca</strong> — Guía práctica de SQL y Base de Datos</p>
+</footer>
+
+    <script src="js/scrip.js"></script>
+</body>
+</html>
