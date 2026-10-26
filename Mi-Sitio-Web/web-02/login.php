@@ -338,7 +338,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <i class="fa-solid fa-arrow-right"></i>
             </button>
         </form>
+<!-- Formulario (Tu código actual) -->
+        <form action="login.php" method="POST">
+            <!-- ... tus inputs y el botón .btn-submit actual ... -->
+        </form>
 
+        
+    
         <div class="card-footer">
             <i class="fa-solid fa-shield-halved"></i> Conexión cifrada • Módulo de Inscripción v1.0
         </div>
